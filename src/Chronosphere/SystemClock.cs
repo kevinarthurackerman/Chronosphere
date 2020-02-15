@@ -8,6 +8,8 @@ namespace Chronosphere
 
         public SystemClock(IReadOnlyChronosphere chronosphere) => _chronosphere = chronosphere;
 
-        public DateTimeOffset UtcNow => new DateTimeOffset(_chronosphere.Now.UtcDateTime);
+        public DateTimeOffset UtcNow => _chronosphere.UtcNow;
+
+        public DateTimeOffset LocalNow => _chronosphere.LocalNow;
     }
 }

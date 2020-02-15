@@ -2,7 +2,7 @@
 
 namespace Chronosphere
 {
-    public interface IReadOnlyChronosphere
+    public interface IReadOnlyChronosphere: ISystemClock
     {
         DateTimeOffset Now { get; }
     }
