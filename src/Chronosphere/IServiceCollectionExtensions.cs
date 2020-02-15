@@ -64,10 +64,12 @@ namespace Chronosphere
                 {
                     if (x.Name != "ISystemClock") return false;
                     if (!x.IsInterface) return false;
-                    var utcNowProp = x.GetProperty("UtcNow");
-                    if (utcNowProp == null) return false;
-                    if (utcNowProp.PropertyType != typeof(DateTimeOffset)) return false;
                     if (x == typeof(ISystemClock)) return false;
+                    var members = x.GetMembers();
+                    if (!members.All(x =>
+                        x is MethodInfo mx && mx.Name == "get_UtcNow" && mx.ReturnType == typeof(DateTimeOffset)
+                        || x is PropertyInfo px && px.Name == "UtcNow" && px.PropertyType == typeof(DateTimeOffset)
+                    )) return false;
                     return true;
                 })
                 .Select(x =>
