@@ -4,7 +4,7 @@
 Chronosphere is the answer to how do I time based features when Microsoft offers a diverse array of SystemClocks throughout their codebase? With Chronosphere you can control what time it is throughout the system in one place. Plus, you can control the time for each test, so you can fast forward and rewind and see if that auth token times out in 30 minutes without having to wait nearly that long.
 
 ### Getting Started
-```
+```csharp
 var serviceProvider = new ServiceCollection()
     .AddChronosphere()
     .BuildServiceProvider();
