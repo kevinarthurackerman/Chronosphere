@@ -15,7 +15,7 @@ var systemClock = serviceProvider.GetRequiredService<Pick.A.Namespace.ISystemClo
 
 Console.WriteLine(systemClock.UtcNow); // writes the current system time
 
-chrono.UtcNow = DateTimeOffset.MinValue;
+chrono.Now = DateTimeOffset.MinValue;
 
 Console.WriteLine(systemClock.UtcNow); // writes a time very near DateTimeOffset.MinValue
 ```
