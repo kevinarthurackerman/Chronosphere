@@ -57,17 +57,7 @@ namespace Chronosphere
                 }
 
                 return assembliesLookup.SelectMany(x => x.GetTypes())
-                    .Where(x =>
-                    {
-                        if (x.Name != "ISystemClock") return false;
-                        if (!x.IsInterface) return false;
-                        var members = x.GetMembers();
-                        if (!members.All(x =>
-                            x is MethodInfo mx && mx.Name == "get_UtcNow" && mx.ReturnType == typeof(DateTimeOffset)
-                            || x is PropertyInfo px && px.Name == "UtcNow" && px.PropertyType == typeof(DateTimeOffset)
-                        )) return false;
-                        return true;
-                    })
+                    .Where(x => x.IsSystemClock())
                     .Append(typeof(ISystemClock))
                     .AsEnumerable();
             }
