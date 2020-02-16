@@ -35,28 +35,9 @@ namespace Chronosphere
 
             static IEnumerable<Type> GetSystemClockInterfaces(Assembly rootAssembly)
             {
-                var assemblies = new Stack<Assembly>(new[] { rootAssembly });
+                var assemblies = rootAssembly.LoadTree();
 
-                var assembliesLookup = assemblies.ToHashSet();
-
-                while (assemblies.TryPop(out var assembly))
-                {
-                    foreach (var referencedAssemblyName in assembly.GetReferencedAssemblies())
-                    {
-                        try
-                        {
-                            var referencedAssembly = Assembly.Load(referencedAssemblyName);
-
-                            if (assembliesLookup.Contains(referencedAssembly)) continue;
-
-                            assembliesLookup.Add(referencedAssembly);
-                            assemblies.Push(referencedAssembly);
-                        }
-                        catch (FileNotFoundException) { }
-                    }
-                }
-
-                return assembliesLookup.SelectMany(x => x.GetTypes())
+                return assemblies.SelectMany(x => x.GetTypes())
                     .Where(x => x.IsSystemClock())
                     .Append(typeof(ISystemClock))
                     .AsEnumerable();
