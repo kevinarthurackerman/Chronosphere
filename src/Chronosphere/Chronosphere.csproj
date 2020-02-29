@@ -2,14 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/kevinarthurackerman/Chronosphere</PackageProjectUrl>
-    <Copyright>MIT</Copyright>
-    <Authors>Kevin Arthur Ackerman</Authors>
-    <Product />
-    <Company />
-    <RepositoryUrl>https://github.com/kevinarthurackerman/Chronosphere</RepositoryUrl>
-    <Version>1.0.0-beta</Version>
   </PropertyGroup>
 
   <ItemGroup>
