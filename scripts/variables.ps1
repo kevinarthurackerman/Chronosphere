@@ -7,3 +7,5 @@ $version="$majorVersion.$minorVersion.$buildVersion$postfixVersion"
 $authors="Kevin Ackerman"
 $copyright="MIT"
 $repoUrl="https://github.com/kevinarthurackerman/Chronosphere"
+
+$buildOrder="variables-chronosphere"
