@@ -34,4 +34,4 @@ Assert.IsTrue(sampleItemAction.TimeSpamp < _clock.UtcNow);
 Want to contribute? Great!
 
 ### License
-MIT
+[MIT](https://github.com/kevinarthurackerman/Chronosphere/blob/master/LICENSE.md)
