@@ -73,56 +73,6 @@ namespace Chronosphere
         public static DateTimeOffset RandomFuture(this ISystemClock systemClock, TimeSpan offset) =>
             systemClock.Random(TimePeriod.Present, TimePeriod.Future, offset);
 
-        [Obsolete]
-        public static DateTimeOffset RandomLocalDateTimeOffset(this ISystemClock systemClock, DateTimeOffset min, DateTimeOffset max) =>
-            RandomDateTimeOffset(min.DateTime, max.DateTime, systemClock.LocalNow.Offset);
-
-        [Obsolete]
-        public static DateTimeOffset RandomPastLocalDateTimeOffset(this ISystemClock systemClock) =>
-            RandomPastLocalDateTimeOffset(systemClock, ChronosphereConstants.OffsetTolerance);
-
-        [Obsolete]
-        public static DateTimeOffset RandomPastLocalDateTimeOffset(this ISystemClock systemClock, TimeSpan tolerance)
-        {
-            var now = systemClock.LocalNow.DateTime;
-            return RandomDateTimeOffset(now - ChronosphereConstants.MaxOffset, now - tolerance, systemClock.LocalNow.Offset);
-
-        }
-
-        [Obsolete]
-        public static DateTimeOffset RandomPastUtcDateTimeOffset(this ISystemClock systemClock) =>
-            RandomPastUtcDateTimeOffset(systemClock, ChronosphereConstants.OffsetTolerance);
-
-        [Obsolete]
-        public static DateTimeOffset RandomPastUtcDateTimeOffset(this ISystemClock systemClock, TimeSpan tolerance)
-        {
-            var now = systemClock.UtcNow.DateTime;
-            return RandomDateTimeOffset(now - ChronosphereConstants.MaxOffset, now - tolerance, TimeSpan.Zero);
-        }
-
-        [Obsolete]
-        public static DateTimeOffset RandomFutureLocalDateTimeOffset(this ISystemClock systemClock) =>
-            RandomFutureLocalDateTimeOffset(systemClock, ChronosphereConstants.OffsetTolerance);
-
-        [Obsolete]
-        public static DateTimeOffset RandomFutureLocalDateTimeOffset(this ISystemClock systemClock, TimeSpan tolerance)
-        {
-            var now = systemClock.LocalNow.DateTime;
-            return RandomDateTimeOffset(now + tolerance, now + ChronosphereConstants.MaxOffset, systemClock.LocalNow.Offset);
-
-        }
-
-        [Obsolete]
-        public static DateTimeOffset RandomFutureUtcDateTimeOffset(this ISystemClock systemClock) =>
-            RandomFutureUtcDateTimeOffset(systemClock, ChronosphereConstants.OffsetTolerance);
-
-        [Obsolete]
-        public static DateTimeOffset RandomFutureUtcDateTimeOffset(this ISystemClock systemClock, TimeSpan tolerance)
-        {
-            var now = systemClock.UtcNow.DateTime;
-            return RandomDateTimeOffset(now + tolerance, now + ChronosphereConstants.MaxOffset, TimeSpan.Zero);
-        }
-
         private static DateTime CalculateMin(DateTime now, TimePeriod min) =>
             min switch
             {
